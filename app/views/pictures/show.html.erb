@@ -1,0 +1,46 @@
+<div class="contents row">
+  <div class="content_post" >
+    <%= image_tag @picture.image.variant(type: :grayscale), class: 'p-image' %>
+    <% if user_signed_in? && current_user.id == @picture.user_id %>
+    <div class="more">
+      <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '編集', edit_picture_path(@picture.id), method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', picture_path(@picture.id), method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+    <p><%= @picture.text %></p>
+    <span class="name">
+      <a href="/users/<%= @picture.user.id %>">
+        <span>投稿者</span><%= @picture.user.nickname %>
+      </a>
+    </span>
+  </div>
+    <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@picture, @comment], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+        <div class="comments">
+      <%= form_with(model: @picture, local: true) do |f| %>
+      <%= render 'error_message', model: f.object %> 
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

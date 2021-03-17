@@ -1,0 +1,26 @@
+    <div class="content_post" >
+    <%= image_tag picture.image.variant(type: :grayscale), class: 'p-image' %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '詳細', picture_path(picture.id), method: :get %>
+          </li>
+          <% if user_signed_in? && current_user.id == picture.user_id %>
+          <li>
+            <%= link_to '編集', edit_picture_path(picture.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', picture_path(picture.id), method: :delete %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <p><%= picture.account %></p>
+      <span class="name">
+        <a href="/users/<%= picture.user.id %>">
+          <span>投稿者</span><%= picture.user.nickname %>
+        </a>
+      </span>
+       <span><h3><%= picture.text %></h3></span>
+    </div>
