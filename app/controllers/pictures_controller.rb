@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_picture, except: [:index, :new, :create]
+  before_action :set_picture, except: [:index, :new, :create, :search]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
