@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_picture, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
     @pictures = Picture.includes(:user).order("created_at DESC")
@@ -53,9 +53,7 @@ class PicturesController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to root_path unless current_user == @picture.user
   end
   
 end
