@@ -42,6 +42,7 @@ Things you may want to cover:
 | ------------------ | ------ | -------------------------- |
 | text               | text   | null: false                |
 | image              | string | null: false , unique: true |
+| account            | string | null: false                |
 
 ## association
 - belongs_to :user
@@ -49,9 +50,11 @@ Things you may want to cover:
 
 ## comments テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| comments        | string | null: false |
+| Column   | Type       | Options                       |
+| -------- | ---------- | ----------------------------- |
+| comments | string     | null: false                   |
+| picture  | references | null: false foreign_key: true |
+| user     | references | null: false foreign_key: true |
 
 # association
 - belongs_to :user
