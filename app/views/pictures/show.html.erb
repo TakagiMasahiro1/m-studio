@@ -32,7 +32,6 @@
     <% end %>
         <div class="comments">
       <%= form_with(model: @picture, local: true) do |f| %>
-      <%= render 'error_message', model: f.object %> 
       <h4>＜コメント一覧＞</h4>
       <% @comments.each do |comment| %>
         <p>
