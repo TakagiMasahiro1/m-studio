@@ -1,6 +1,7 @@
-    <%= form_with(model: picture, local: true) do |form| %>
+    <%= form_with model: picture, local: true do |form| %>
+     <%= render 'layouts/error_messages', model: form.object %>
       <%= form.file_field :image %>
-      <%= form.text_field :account, placeholder: "ここにSNSのリンクをを追加してもっと作品を見てもらいましょう！"%>
+      <%= form.text_field :account, placeholder: "その他アカウントのURL"%>
       <%= form.text_area :text, placeholder: "ここに制作ソフトや制作期間を入力してください", rows: "10" %>
       <%= form.submit "SEND" %>
     <% end %>

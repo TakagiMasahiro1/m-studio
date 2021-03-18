@@ -1,0 +1,9 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+     picture:
+       text: 制作ソフトや製作期間
+       image: 画像
+       account: その他アカウントのURL
