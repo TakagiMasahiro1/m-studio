@@ -59,3 +59,9 @@ Things you may want to cover:
 # association
 - belongs_to :user
 - belongs_to :picture
+
+アプリケーション名    :M-Studio
+アプリケーション概要  :イラスト投稿機能
+URL                :https://m-studio.herokuapp.com/
+利用方法            :ログイン/ログアウト/画像投稿/投稿削除/投稿編集/コメント
+目指した課題         :漫画の原作者と作画のマッチング
